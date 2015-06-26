@@ -1,8 +1,10 @@
-GHvA3C
+Spectacles for Grasshopper
 ======
 
-Grasshopper plugin to export three.json files that can be loaded by the vA3C viewer. 
-Implemented by Benjamin Howes, Charlie Portelli and Jonatan Schumacher at the <a href="http://core.thorntontomasetti.com/aec-technology-symposium-2014/aec-technology-symposium-2014-hackathon/">AEC Technology Hackathon in NYC </a>in May 2014.
+A Grasshopper plugin to export three.json files that can be loaded by the Spectacles web viewer. 
+
+First implemented by Benjamin Howes, Charlie Portelli and Jonatan Schumacher at the <a href="http://core.thorntontomasetti.com/aec-technology-symposium-2014/aec-technology-symposium-2014-hackathon/">AEC Technology Hackathon in NYC </a>in May 2014 as part of the vA3C project.  Currently being maintained by Thornton Tomasetti's CORE studio.
+
 Installation
 ------------
 Download <a href="https://github.com/va3c/GHvA3C/releases/">the latest release</a> of the GHvA3C.zip file and extract the folder titled 'GHvA3C_Plugin' into this directory on your computer: 
