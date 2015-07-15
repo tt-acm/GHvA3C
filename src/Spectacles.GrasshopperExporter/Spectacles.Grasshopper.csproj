@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug32</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0263A492-8E72-4296-BF0C-938ABFDD8C3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Spectacles.GrasshopperExporter</RootNamespace>
+    <AssemblyName>Spectacles.GrasshopperExporter</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug64|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GH_IO">
+      <HintPath>..\..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GH_Util">
+      <HintPath>..\..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_Util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Grasshopper">
+      <HintPath>..\..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Grasshopper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RhinoCommon">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhinoceros 5.0 (64-bit)\System\RhinoCommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARCHIVE\va3c_LineBasicMaterial_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_Line_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_MeshBasicMaterial_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_MeshColoredFaces_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_MeshColoredVertices_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_MeshLambertMaterial_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_MeshPhongMaterial_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_Mesh_ARCHIVE_20150311.cs" />
+    <Compile Include="ARCHIVE\va3c_SceneCompiler_ARCHIVE_20150311.cs" />
+    <Compile Include="Spectacles_Layer.cs" />
+    <Compile Include="Spectacles_LayerParameter.cs" />
+    <Compile Include="Spectacles_Material.cs" />
+    <Compile Include="Spectacles_Element.cs" />
+    <Compile Include="Spectacles.GrasshopperExporterInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Spectacles_MaterialParameter.cs" />
+    <Compile Include="Spectacles_ElementParameter.cs" />
+    <Compile Include="Spectacles_Line.cs" />
+    <Compile Include="Spectacles_LineBasicMaterial.cs" />
+    <Compile Include="Spectacles_MeshBasicMaterial.cs" />
+    <Compile Include="Spectacles_MeshColoredFaces.cs" />
+    <Compile Include="Spectacles_Mesh.cs" />
+    <Compile Include="ARCHIVE\va3c_Material_ARCHIVE_20141116.cs" />
+    <Compile Include="Spectacles_MeshColoredVertices.cs" />
+    <Compile Include="ARCHIVE\va3c_Scene_ARCHIVE_20141104.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectacles_MeshLambertMaterial.cs" />
+    <Compile Include="Spectacles_MeshPhongMaterial.cs" />
+    <Compile Include="Spectacles_Views.cs" />
+    <Compile Include="Spectacles_SceneCompiler.cs" />
+    <Compile Include="_Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LINE_MAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_VERTICES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_FACES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_BASIC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_PHONG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LINE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_LAMBERT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LINE-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LINE_MATERIAL-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_BASIC-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_FACES-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_LAMBERT-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_PHONG-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MESH_VERTICES-01_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAMERA_OLD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAMERA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SPECTACLES_24px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+Copy "$(TargetPath)" "$(AppData)\Grasshopper\Libraries\$(ProjectName).gha"
+Erase "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">
+    <StartArguments>
+    </StartArguments>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files (x86)\Rhinoceros 5.0\System\Rhino4.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup>
+    <FallbackCulture>en-US</FallbackCulture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug64|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhinoceros 5.0 (64-bit)\System\Rhino.exe</StartProgram>
+    <StartArguments>
+    </StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+</Project>
