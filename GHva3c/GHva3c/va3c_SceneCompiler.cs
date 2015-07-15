@@ -542,7 +542,7 @@ namespace GHva3c
             get
             {
                 //You can add image files to your project resources and access them like this:
-                return Resources._3;
+                return Resources.SPECTACLES_24px;
             }
         }
 
