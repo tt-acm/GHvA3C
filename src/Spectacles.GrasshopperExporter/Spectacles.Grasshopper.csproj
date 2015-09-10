@@ -180,9 +180,6 @@
     <None Include="Resources\SPECTACLES_24px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1441921166_world.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\SPECTACLES_browser_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
