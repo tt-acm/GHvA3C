@@ -59,7 +59,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RhinoCommon">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Rhinoceros 5.0 (64-bit)\System\RhinoCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\McNeel\Rhinoceros 5.0\System\RhinoCommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -77,6 +77,7 @@
     <Compile Include="ARCHIVE\va3c_MeshPhongMaterial_ARCHIVE_20150311.cs" />
     <Compile Include="ARCHIVE\va3c_Mesh_ARCHIVE_20150311.cs" />
     <Compile Include="ARCHIVE\va3c_SceneCompiler_ARCHIVE_20150311.cs" />
+    <Compile Include="Spectacles_LaunchBrowser.cs" />
     <Compile Include="Spectacles_Layer.cs" />
     <Compile Include="Spectacles_LayerParameter.cs" />
     <Compile Include="Spectacles_Material.cs" />
@@ -177,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SPECTACLES_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1441921166_world.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SPECTACLES_browser_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
