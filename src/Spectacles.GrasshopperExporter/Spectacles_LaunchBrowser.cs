@@ -54,7 +54,7 @@ namespace Spectacles.GrasshopperExporter
         /// </summary>
         public Spectacles_LaunchBrowser()
             : base("Launch Spectacles Viewer", "Spectacles_Viewer",
-                "Double-click to launch the spectacles viewer in your browser.",
+                "Launches the Spectacles Viewer in your web browser.",
                 "Spectacles", "Spectacles")
         { }
 
@@ -73,7 +73,7 @@ namespace Spectacles.GrasshopperExporter
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("URL", "[U]", "URL to open", GH_ParamAccess.item,"http://tt-acm.github.io/Spectacles.WebViewer/");
-            pManager.AddBooleanParameter("Launch Boolean", "B", "Set to True to Launch Default Web Browser", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Launch Boolean", "B", "Set to True to Launch Default Web Browser.", GH_ParamAccess.item, false);
         }
 
         /// <summary>
