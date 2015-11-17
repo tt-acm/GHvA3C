@@ -41,7 +41,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_MeshPhongMaterial()
             : base("Spectacles_MeshPhongMaterial", "Spectacles_MeshPhongMaterial",
                 "Create a shiny material for meshes",
-                "Spectacles", "materials")
+                "TT Toolbox", "Spectacles")
         {
         }
 

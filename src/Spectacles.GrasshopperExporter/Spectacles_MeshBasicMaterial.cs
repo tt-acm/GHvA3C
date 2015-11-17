@@ -44,7 +44,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_MeshBasicMaterial()
             : base("Spectacles_MeshBasicMaterial", "Spectacles_MeshBasicMaterial",
                 "Creates mesh material that will always be the same color in a THREE.js scene - it will not be effected by lighting.",
-                "Spectacles", "materials")
+                "TT Toolbox", "Spectacles")
         {
         }
 

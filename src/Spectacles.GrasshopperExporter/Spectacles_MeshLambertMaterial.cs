@@ -41,7 +41,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_MeshLambertMaterial()
             : base("Spectacles_MeshLambertMaterial", "Spectacles_MeshLambertMaterial",
                 "Creates a non-shiny mesh material.",
-                "Spectacles", "materials")
+                "TT Toolbox", "Spectacles")
         {
         }
 

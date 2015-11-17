@@ -47,8 +47,16 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_Views()
             : base("Spectacles_Views", "Spectacles_Views",
                 "Compiles the views selected to be exported",
-                "Spectacles", "views")
+                "TT Toolbox", "Spectacles")
         {
+        }
+
+        public override GH_Exposure Exposure
+        {
+            get
+            {
+                return GH_Exposure.tertiary;
+            }
         }
 
         /// <summary>

@@ -47,8 +47,15 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_SceneCompiler()
             : base("Spectacles_SceneCompiler", "Spectacles_SceneCompiler",
                 "Compiles Spectacles objects into a JSON representation of a THREE.js scene, which can be opened using the Spectacles viewer.",
-                "Spectacles", "Spectacles")
+                "TT Toolbox", "Spectacles")
         {
+        }
+        public override GH_Exposure Exposure
+        {
+            get
+            {
+                return GH_Exposure.quarternary;
+            }
         }
 
         /// <summary>

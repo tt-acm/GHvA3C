@@ -55,14 +55,14 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_LaunchBrowser()
             : base("Launch Spectacles Viewer", "Spectacles_Viewer",
                 "Launches the Spectacles Viewer in your web browser.",
-                "Spectacles", "Spectacles")
+                "TT Toolbox", "Spectacles")
         { }
 
         public override GH_Exposure Exposure
         {
             get
             {
-                return GH_Exposure.secondary;
+                return GH_Exposure.quarternary;
             }
         }
 

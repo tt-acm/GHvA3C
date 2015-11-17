@@ -44,7 +44,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_Line()
             : base("Spectacles_Line", "Spectacles_Line",
                 "Creates a Spectacles line",
-                "Spectacles", "geometry")
+                "TT Toolbox", "Spectacles")
         {
         }
 

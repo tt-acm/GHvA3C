@@ -41,7 +41,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_LineBasicMaterial()
             : base("Spectacles_LineBasicMaterial", "Spectacles_LineBasicMaterial",
                 "Creates a THREE.js Basic Line Material to use with line geometries",
-                "Spectacles", "materials")
+                "TT Toolbox", "Spectacles")
         {
         }
 
@@ -49,7 +49,7 @@ namespace Spectacles.GrasshopperExporter
         {
             get
             {
-                return GH_Exposure.primary;
+                return GH_Exposure.secondary;
             }
         }
 

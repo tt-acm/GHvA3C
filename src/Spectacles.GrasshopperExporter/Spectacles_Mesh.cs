@@ -45,14 +45,14 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_Mesh()
             : base("Spectacles_Mesh", "Spectacles_Mesh",
                 "Creates a Spectacles mesh from a grasshopper mesh.",
-                "Spectacles", "geometry")
+                "TT Toolbox", "Spectacles")
         { }
 
         public override GH_Exposure Exposure
         {
             get
             {
-                return GH_Exposure.secondary;
+                return GH_Exposure.primary;
             }
         }
 

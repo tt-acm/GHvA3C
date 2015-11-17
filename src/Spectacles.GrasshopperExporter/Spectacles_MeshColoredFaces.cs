@@ -44,7 +44,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_MeshColoredFaces()
             : base("Spectacles_MeshColoredFaces", "Spectacles_MeshColoredFaces",
                 "Creates a Spectacles mesh and a set of materials from a grasshopper mesh and a list of colors - one color per face.  If the colors list isn't the same length as the list of faces, we'll do standard grasshopper longest list iteration, using the mesh faces as the driving list.",
-                "Spectacles", "geometry")
+                "TT Toolbox", "Spectacles")
         {
         }
 
@@ -52,7 +52,7 @@ namespace Spectacles.GrasshopperExporter
         {
             get
             {
-                return GH_Exposure.tertiary;
+                return GH_Exposure.primary;
             }
         }
 
