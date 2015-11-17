@@ -179,6 +179,9 @@ namespace Spectacles.GrasshopperExporter
             //check to see if the file path has any invalid characters
             try
             {
+                //Check if the .json file extension is there. If not, add it
+                if (myFilePath.Substring(myFilePath.Length - 5) != ".json") myFilePath += ".json";
+
                 //FIRST check to see if there is more than one semicolon in the path
                 //or if there is a semiColon anywhere in there
                 string[] colonFrags = myFilePath.Split(':');
