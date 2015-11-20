@@ -132,6 +132,15 @@ namespace Spectacles.GrasshopperExporter
                 jason.transparent = true;
                 jason.opacity = opp;
             }
+
+            else
+            {
+                if (col.Value.A < 255)
+                {
+                    jason.transparent = true;
+                    jason.opacity = (col.Value.A) / 255.0;
+                }
+            }
             jason.wireframe = false;
             jason.side = 2;
             return JsonConvert.SerializeObject(jason);

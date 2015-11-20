@@ -109,10 +109,20 @@ namespace Spectacles.GrasshopperExporter
             jason.type = "MeshBasicMaterial";
             jason.color = _Utilities.hexColor(inColor);
             jason.side = 2;
+
+           
             if (inOpacity < 1)
             {
                 jason.transparent = true;
                 jason.opacity = inOpacity;
+            }
+
+            else
+            {
+                if (inColor.Value.A < 255) {
+                    jason.transparent = true;
+                    jason.opacity = (inColor.Value.A)/255.0;
+                }
             }
             return JsonConvert.SerializeObject(jason);
         }
