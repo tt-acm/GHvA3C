@@ -107,6 +107,8 @@ namespace Spectacles.GrasshopperExporter
             {
                 return;
             }
+
+            
             DA.GetDataList(2, attributeNames);
             DA.GetDataList(3, attributeValues);
             if (attributeValues.Count != attributeNames.Count)
@@ -169,6 +171,7 @@ namespace Spectacles.GrasshopperExporter
                 {
                     matCounter = mesh.Faces.Count = 1;
                 }
+                if (matCounter > colors.Count - 1) matCounter = colors.Count - 1;
 
                 //get a string representation of the color
                 string myColorStr = _Utilities.hexColor(colors[matCounter]);
