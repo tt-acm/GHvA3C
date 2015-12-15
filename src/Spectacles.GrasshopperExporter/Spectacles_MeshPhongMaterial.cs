@@ -127,9 +127,15 @@ namespace Spectacles.GrasshopperExporter
             jason.emissive = _Utilities.hexColor(em);
             jason.specular = _Utilities.hexColor(spec);
             jason.shininess = shin;
+
             jason.transparent = true;
             jason.opacity = opp;
-            
+
+            if (opp ==1.0 && col.Value.A < 255)
+            {                  
+                    jason.opacity = (col.Value.A) / 255.0;
+            }
+
             jason.wireframe = false;
             jason.side = 2;
             return JsonConvert.SerializeObject(jason);

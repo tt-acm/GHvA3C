@@ -117,9 +117,20 @@ namespace Spectacles.GrasshopperExporter
             jason.type = "MeshLambertMaterial";
             jason.color = _Utilities.hexColor(col);
             jason.ambient = _Utilities.hexColor(amb);
+
             jason.emissive = _Utilities.hexColor(em);            
             jason.transparent = true;
             jason.opacity = opp;
+
+            jason.emissive = _Utilities.hexColor(em);
+            
+
+            if(opp==1.0 && col.Value.A < 255){
+
+                    jason.opacity = (col.Value.A) / 255.0;
+                
+            }
+
             jason.wireframe = false;
             jason.side = 2;
             if (smooth)
