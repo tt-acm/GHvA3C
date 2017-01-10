@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Timers;
+using System.Drawing;
 
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Types;
@@ -53,6 +54,20 @@ namespace Spectacles.GrasshopperExporter
                 ghColor.Value.B.ToString("X2");
 
             return hexStr;
+        }
+
+        /// <summary>
+        /// Returns a css string representation of a .net color
+        /// </summary>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        public static string cssColor(Color col)
+        {
+            string cssStr = "#" + col.R.ToString("X2") +
+                col.G.ToString("X2") +
+                col.B.ToString("X2");
+
+            return cssStr;
         }
 
         /// <summary>
@@ -150,6 +165,111 @@ namespace Spectacles.GrasshopperExporter
 
             return JsonConvert.SerializeObject(jason);
         }
+
+        /// <summary>
+        /// Returns a JSON string representing a rhino mesh, and containing any attributes as user data
+        /// </summary>
+        /// <param name="mesh">The rhino mesh to serialize.  Can contain quads and tris.</param>
+        /// <param name="attDict">The attribute dictionary to serialize.  Objects should all be reference types.</param>
+        /// <returns>a JSON string representing a rhino mes</returns>
+        public static string geoJSONColoredVertices(Mesh mesh, Dictionary<string, object> attDict)
+        {
+            //create a dynamic object to populate
+            dynamic jason = new ExpandoObject();
+
+
+            jason.uuid = Guid.NewGuid();
+            jason.type = "Geometry";
+            jason.data = new ExpandoObject();
+            jason.userData = new ExpandoObject();
+
+            //populate data object properties
+
+            //fisrt, figure out how many faces we need based on the tri/quad count
+            var quads = from q in mesh.Faces
+                        where q.IsQuad
+                        select q;
+
+            jason.data.vertices = new object[mesh.Vertices.Count * 3];
+            jason.data.faces = new object[(mesh.Faces.Count + quads.Count()) * 7];
+            jason.data.normals = new object[0];
+            jason.data.uvs = new object[0];
+            jason.data.scale = 1;
+            jason.data.visible = true;
+            jason.data.castShadow = true;
+            jason.data.receiveShadow = false;
+            jason.data.doubleSided = true;
+
+            //populate vertices
+            int counter = 0;
+            int i = 0;
+            foreach (var v in mesh.Vertices)
+            {
+                jason.data.vertices[counter++] = System.Math.Round(mesh.Vertices[i].X * -1.0, 5);
+                jason.data.vertices[counter++] = System.Math.Round(mesh.Vertices[i].Z, 5);
+                jason.data.vertices[counter++] = System.Math.Round(mesh.Vertices[i].Y, 5);
+                i++;
+            }
+
+            //populate faces
+            counter = 0;
+            i = 0;
+            foreach (var f in mesh.Faces)
+            {
+                if (f.IsTriangle)
+                {
+                    jason.data.faces[counter++] = 128;
+                    jason.data.faces[counter++] = mesh.Faces[i].A;
+                    jason.data.faces[counter++] = mesh.Faces[i].B;
+                    jason.data.faces[counter++] = mesh.Faces[i].C;
+                    jason.data.faces[counter++] = mesh.Faces[i].A;
+                    jason.data.faces[counter++] = mesh.Faces[i].B;
+                    jason.data.faces[counter++] = mesh.Faces[i].C;
+                    i++;
+                }
+                if (f.IsQuad)
+                {
+                    jason.data.faces[counter++] = 128;
+                    jason.data.faces[counter++] = mesh.Faces[i].A;
+                    jason.data.faces[counter++] = mesh.Faces[i].B;
+                    jason.data.faces[counter++] = mesh.Faces[i].C;
+                    jason.data.faces[counter++] = mesh.Faces[i].A;
+                    jason.data.faces[counter++] = mesh.Faces[i].B;
+                    jason.data.faces[counter++] = mesh.Faces[i].C;
+                    jason.data.faces[counter++] = 128;
+                    jason.data.faces[counter++] = mesh.Faces[i].C;
+                    jason.data.faces[counter++] = mesh.Faces[i].D;
+                    jason.data.faces[counter++] = mesh.Faces[i].A;
+                    jason.data.faces[counter++] = mesh.Faces[i].C;
+                    jason.data.faces[counter++] = mesh.Faces[i].D;
+                    jason.data.faces[counter++] = mesh.Faces[i].A;
+                    i++;
+                }
+            }
+
+            //populate vertex colors
+            if (mesh.VertexColors.Count != 0)
+            {
+                jason.data.colors = new object[mesh.Vertices.Count];
+                i = 0;
+                foreach (var c in mesh.VertexColors)
+                {
+                    jason.data.colors[i] = _Utilities.cssColor(c);
+                    i++;
+                }
+            }
+
+
+            //populate userData objects
+            var attributeCollection = (ICollection<KeyValuePair<string, object>>)jason.userData;
+            foreach (var kvp in attDict)
+            {
+                attributeCollection.Add(kvp);
+            }
+
+
+            return JsonConvert.SerializeObject(jason);
+        }
     }
 
 
@@ -220,6 +340,7 @@ namespace Spectacles.GrasshopperExporter
         public double opacity;
         public bool transparent;
         public int shading;
+        public int vertexColors;
 
     }
 

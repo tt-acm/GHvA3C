@@ -44,7 +44,7 @@ namespace Spectacles.GrasshopperExporter
         public Spectacles_MeshColoredVertices()
             : base("Spectacles_MeshColoredVertices", "Spectacles_MeshColoredVertices",
                 "Creates a Spectacles mesh and a material from a grasshopper mesh with color data.",
-                "Spectacles", "geometry")
+                "TT Toolbox", "Spectacles")
         {
         }
 
@@ -52,8 +52,8 @@ namespace Spectacles.GrasshopperExporter
         {
             get
             {
-                return GH_Exposure.hidden;
-                //return GH_Exposure.tertiary;
+                //return GH_Exposure.hidden;
+                return GH_Exposure.primary;
             }
         }
 
@@ -74,8 +74,8 @@ namespace Spectacles.GrasshopperExporter
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Mesh JSON", "Mj", "Mesh JSON output to feed into scene compiler component", GH_ParamAccess.item);
-            pManager.AddTextParameter("Mesh Material", "Mm", "Mesh Material JSON output to feed into scene compiler component.  Make sure to amtch this material with the corresponding mesh from Mj above.", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Mesh Element", "Me", "Mesh element output to feed into scene compiler component", GH_ParamAccess.item);
+
         }
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Spectacles.GrasshopperExporter
         {
             //local varaibles
             GH_Mesh mesh = null;
-            List<GH_String> attributeNames = new List<GH_String>();
-            List<GH_String> attributeValues = new List<GH_String>();
+            System.Collections.Generic.List<GH_String> attributeNames = new System.Collections.Generic.List<GH_String>();
+            System.Collections.Generic.List<GH_String> attributeValues = new System.Collections.Generic.List<GH_String>();
             Dictionary<string, object> attributesDict = new Dictionary<string, object>();
 
             //catch inputs and populate local variables
@@ -117,10 +117,13 @@ namespace Spectacles.GrasshopperExporter
 
 
             //create json from mesh
-            string outJSON = _Utilities.geoJSON(mesh.Value, attributesDict);
+            string outJSON = _Utilities.geoJSONColoredVertices(mesh.Value, attributesDict);
 
-            DA.SetData(0, outJSON);
-            DA.SetData(1, MaterialWithVertexColors());
+
+            Material material = new Material(MaterialWithVertexColors(), SpectaclesMaterialType.Mesh);
+            Element e = new Element(outJSON, SpectaclesElementType.Mesh, material, new Layer("Default"));
+
+            DA.SetData(0, e);
         }
 
         public string MaterialWithVertexColors()
@@ -130,8 +133,9 @@ namespace Spectacles.GrasshopperExporter
             JsonMat.uuid = Guid.NewGuid();
             JsonMat.type = "MeshLambertMaterial";
             JsonMat.color = _Utilities.hexColor(new GH_Colour(System.Drawing.Color.White));
+            JsonMat.ambient = _Utilities.hexColor(new GH_Colour(System.Drawing.Color.White));
             JsonMat.side = 2;
-            JsonMat.vertexColors = 1;
+            JsonMat.vertexColors = 2;
             return JsonConvert.SerializeObject(JsonMat);
         }
 
