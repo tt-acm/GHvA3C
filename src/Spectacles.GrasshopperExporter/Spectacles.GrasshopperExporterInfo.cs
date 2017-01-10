@@ -20,21 +20,74 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+using System;
+using System.Drawing;
 using Grasshopper.Kernel;
 
 namespace Spectacles.GrasshopperExporter
 {
     public class Spectacles_GrasshopperExporterInfo : GH_AssemblyInfo
     {
-        public override string AssemblyName
+
+        public override string Name
+        {
+            get { return "Spectacles.GrasshopperExporter"; }
+        }
+        public override Bitmap Icon
         {
             get
             {
-                return "Spectacles.GrasshopperExporter";
+                //Return a 24x24 pixel bitmap to represent this GHA library.
+                return Properties.Resources.SPECTACLES_24px;
+            }
+        }
+        public override string AssemblyVersion
+        {
+            get
+            {
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
 
-        //Override here any more methods you see fit.
-        //Start typing public override..., select a property and push Enter.
+        public override GH_LibraryLicense AssemblyLicense
+        {
+            get
+            {
+                return GH_LibraryLicense.opensource;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                //Return a short string describing the purpose of this GHA library.
+                return "Create Spectacles models from Grasshopper Geometry.";
+            }
+        }
+        public override Guid Id
+        {
+            get
+            {
+                return new Guid("81FD584C-6B82-47EE-B7D7-241313D5EDE1");
+            }
+        }
+
+        public override string AuthorName
+        {
+            get
+            {
+                //Return a string identifying you or your company.
+                return "CORE studio | Thornton Tomasetti";
+            }
+        }
+        public override string AuthorContact
+        {
+            get
+            {
+                //Return a string representing your preferred contact details.
+                return "ttcorestudio@gmail.com";
+            }
+        }
     }
 }
