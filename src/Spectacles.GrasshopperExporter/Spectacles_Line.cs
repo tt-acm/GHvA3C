@@ -62,7 +62,7 @@ namespace Spectacles.GrasshopperExporter
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddLineParameter("Line", "L", "A line to convert into a Spectacles JSON representation of the line", GH_ParamAccess.item);
-            pManager.AddGenericParameter("Line Material", "Lm", "Line Material", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Line Material", "[Lm]", "Line Material", GH_ParamAccess.item);
             pManager.AddTextParameter("Layer", "[L]", "Layer", GH_ParamAccess.item);
             pManager[2].Optional = true;
 
@@ -100,7 +100,7 @@ namespace Spectacles.GrasshopperExporter
 
             if (material.Type != SpectaclesMaterialType.Line)
             {
-                throw new Exception("Please use a LINE Material");
+                material = lineDefaultMaterial();
             }
 
             DA.GetData(2, ref layerName);
@@ -168,6 +168,21 @@ namespace Spectacles.GrasshopperExporter
         public override Guid ComponentGuid
         {
             get { return new Guid("{7705c130-3743-4243-b421-3e709531f189}"); }
+        }
+
+        private Material lineDefaultMaterial()
+        {
+            dynamic jason = new ExpandoObject();
+
+            //JSON properties
+            jason.uuid = Guid.NewGuid();
+            jason.type = "LineBasicMaterial";
+            jason.color = "0x000000";
+            jason.linewidth = 1;
+            jason.opacity = 1;
+
+            Material material = new Material(JsonConvert.SerializeObject(jason), SpectaclesMaterialType.Line);
+            return material;
         }
     }
 }
