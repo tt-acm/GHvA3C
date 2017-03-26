@@ -63,6 +63,7 @@ namespace Spectacles.GrasshopperExporter
         {
             pManager.AddLineParameter("Line", "L", "A line to convert into a Spectacles JSON representation of the line", GH_ParamAccess.item);
             pManager.AddGenericParameter("Line Material", "[Lm]", "Line Material", GH_ParamAccess.item);
+            pManager[1].Optional = true;
             pManager.AddTextParameter("Layer", "[L]", "Layer", GH_ParamAccess.item);
             pManager[2].Optional = true;
 
@@ -95,12 +96,12 @@ namespace Spectacles.GrasshopperExporter
 
             if (!DA.GetData(1, ref material))
             {
-                return;
+                material = lineDefaultMaterial();
             }
 
             if (material.Type != SpectaclesMaterialType.Line)
             {
-                material = lineDefaultMaterial();
+                throw new Exception("Please use a LINE Material");
             }
 
             DA.GetData(2, ref layerName);

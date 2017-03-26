@@ -60,8 +60,8 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RhinoCommon">
-      <HintPath>..\..\..\..\..\..\..\Program Files\McNeel\Rhinoceros 5.0\System\RhinoCommon.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rhinoceros 5 (64-bit)\System\RhinoCommon.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Spectacles_MeshLambertMaterial.cs" />
     <Compile Include="Spectacles_MeshPhongMaterial.cs" />
+    <Compile Include="Spectacles_SceneObjects.cs" />
     <Compile Include="Spectacles_Views.cs" />
     <Compile Include="Spectacles_SceneCompiler.cs" />
     <Compile Include="_Utilities.cs" />
@@ -193,7 +194,6 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
-Copy "$(TargetPath)" "$(AppData)\Grasshopper\Libraries\$(ProjectName).gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug32|AnyCPU' ">
