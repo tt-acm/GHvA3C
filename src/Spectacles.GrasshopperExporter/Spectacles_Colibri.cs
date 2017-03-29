@@ -10,13 +10,13 @@ using Newtonsoft.Json;
 
 namespace Spectacles.GrasshopperExporter
 {
-    public class Spectacles_SceneObjects : GH_Component
+    public class Spectacles_Colibri : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the Spectacles_SceneObjects class.
         /// </summary>
-        public Spectacles_SceneObjects()
-          : base("Spectacles_SceneObjects", "SceneObjects",
+        public Spectacles_Colibri()
+          : base("Spectacles Colibri_3DObjects", "3DObjects",
               "Compiles Spectacles objects into a JSON representation of a THREE.js scene, which can be opened using the Spectacles viewer.",
                 "TT Toolbox", "Spectacles")
         {
@@ -45,7 +45,7 @@ namespace Spectacles.GrasshopperExporter
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("3D Objects", "3DObjects", "3d element output to feed into Aggregator component", GH_ParamAccess.item);
+            pManager.AddGenericParameter("3D Objects", "3DObjects", "3d objects output to feed into Colibri's Aggregator component", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -131,11 +131,12 @@ namespace Spectacles.GrasshopperExporter
             {
                 var outJSONObjects = sceneJSONObjects(inMeshGeometry, inMeshMaterial, inMeshLayer, inLineGeometry, inLineMaterial, inLineLayer, inViews, definitionLayers);
                 //var outParam = new threeDParam(outJSONObjects);
+                //var wrapper = new GH_ObjectWrapper(outJSONObjects);
                 DA.SetData(0, outJSONObjects);
             }
             else
             {
-                DA.SetData(0, new threeDParam());
+                DA.SetData(0, "noData!");
             }
             
         }
@@ -149,7 +150,7 @@ namespace Spectacles.GrasshopperExporter
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return null;
+                return Properties.Resources.Colibri3D;
             }
         }
 
@@ -461,27 +462,27 @@ namespace Spectacles.GrasshopperExporter
 
     }
     
-    public class threeDParam
-    {
-        public bool IsDefined { get; set; }
-        public string JsonSting { get; set; }
-        public threeDParam()
-        {
-            this.IsDefined = false;
-        }
-        public threeDParam(object JsonObj)
-        {
-            this.IsDefined = true;
-            this.JsonSting = JsonConvert.SerializeObject(JsonObj);
-            this.JsonSting = JsonSting.Replace("OOO", "object");
+    //public class threeDParam
+    //{
+    //    //public bool IsDefined { get; set; }
+    //    //public string JsonSting { get; set; }
+    //    //public threeDParam()
+    //    //{
+    //    //    this.IsDefined = false;
+    //    //}
+    //    //public threeDParam(object JsonObj)
+    //    //{
+    //    //    this.IsDefined = true;
+    //    //    this.JsonSting = JsonConvert.SerializeObject(JsonObj);
+    //    //    this.JsonSting = JsonSting.Replace("OOO", "object");
 
-        }
+    //    //}
 
-        public override string ToString()
-        {
-            string outputString = "3D Model for Design Explorer.\nPlease connect this output to Colibri Aggregator's 3DParam";
-            return outputString;
-        }
+    //    public override string ToString()
+    //    {
+    //        string outputString = "3D Model for Design Explorer.\nPlease connect this output to Colibri Aggregator's 3DParam";
+    //        return outputString;
+    //    }
         
-    }
+    //}
 }

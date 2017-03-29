@@ -103,6 +103,16 @@ namespace Spectacles.GrasshopperExporter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Colibri3D {
+            get {
+                object obj = ResourceManager.GetObject("Colibri3D", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LINE {
             get {
                 object obj = ResourceManager.GetObject("LINE", resourceCulture);
